@@ -30,30 +30,11 @@
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
           {% if user.is_authenticated %}
-          {% if user.usertype == "Student" %}
-            <a class="nav-item nav-link" id="student-management" href="/student-management">Management</a>
-            <a class="nav-item nav-link" id="courses" href="/courses">Courses</a>
-
-            {% endif %}
-            {% if user.usertype == "Registrar" %}
-            <a class="nav-item nav-link" id="registrar-management" href="/registrar-management">Management</a>
-            <a class="nav-item nav-link" id="course_management" href="/course-management">Course Management</a>
-            <a class="nav-item nav-link" id="courses-make" href="/courses-make">Course Make</a>
-            <a class="nav-item nav-link" id="applications" href="/applications">Applications</a>
-            <a class="nav-item nav-link" id="warnings" href="/warnings">Warnings</a>
-            {% endif %}
-          {% if user.usertype == "Instructor" %}
-            <a class="nav-item nav-link" id="instructor-management" href="/instructor-management">Management</a>
-            {% endif %}
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+              <a class="nav-item nav-link" id="homepage" href="/">Homepage</a>
+              <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% else %}
-          <a class="nav-item nav-link" id="homepage" href="/">Homepage</a>
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="apply" href="/apply">Apply</a>
-          <a class="nav-item nav-link" id="applicationStatus" href="/application-status">Application Status</a>
-          <a class="nav-item nav-link" id="registrarMake" href="/registrar-make">Make Registrar</a>
-              <a class="nav-item nav-link" id="studentMake" href="/student-make">Make Student</a>
-              <a class="nav-item nav-link" id="instructorMake" href="/instructor-make">Make Instructor</a>
+              <a class="nav-item nav-link" id="sign-up" href="/sign-up">Sign Up</a>
+              <a class="nav-item nav-link" id="login" href="/login">Login</a>
           {% endif %}
         </div>
       </div>
