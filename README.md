@@ -4,7 +4,7 @@
 Liana Hasan, lhasan000@citymail.cuny.edu  
 Sabrina Reyes, sreyes011@citymail.cuny.edu,   
 Carlos Flores, cflores005@citymail.cuny.edu,  
-Shahid,  
+Shahid Emdad, semdad000@citymail.cuny.edu  
 Steven Granaturov, sgranat000@citymail.cuny.edu
 
 ## Purpose
