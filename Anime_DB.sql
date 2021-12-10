@@ -1,33 +1,47 @@
-CREATE DATABASE `ANIME_DB`;
-USE `ANIME_DB`;
+CREATE DATABASE IF NOT EXISTS ANIME_DB;
+USE ANIME_DB;
 
 CREATE TABLE User(
-	Username VARCHAR(10),
-	FullName VARCHAR(20),
+	username VARCHAR(10),
+	fullName VARCHAR(20),
 	email VARCHAR(20),
 	userPassword VARCHAR(10)
 );
 
-CREATE TABLE AnimeReview(
-	uid INTEGER  NOT NULL PRIMARY KEY,
+CREATE TABLE Homepage(
+	uid INTEGER NOT NULL PRIMARY KEY,
 	title VARCHAR(100) NOT NULL,
+    img_url VARCHAR(56),
 	genre VARCHAR(153) NOT NULL,
-	score VARCHAR(18)
+    episodes NUMERIC(6,1),
+	score VARCHAR(18),
+    more_info VARCHAR(138) NOT NULL
 );
+
+CREATE TABLE MyList(
+	uid INTEGER NOT NULL PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+    img_url VARCHAR(56),
+	score VARCHAR(18),
+    myscore VARCHAR(18),
+    mycomment VARCHAR(400) NOT NULL
+);
+
 CREATE TABLE Anime(
-   uid        INTEGER  NOT NULL PRIMARY KEY 
-  ,title      VARCHAR(100) NOT NULL
-  ,synopsis   VARCHAR(2745)
-  ,genre      VARCHAR(153) NOT NULL
-  ,aired      VARCHAR(28) NOT NULL
-  ,episodes   NUMERIC(6,1)
-  ,members    INTEGER  NOT NULL
-  ,popularity INTEGER  NOT NULL
-  ,ranked     NUMERIC(7,1)
-  ,score      VARCHAR(18)
-  ,img_url    VARCHAR(56)
-  ,url_link       VARCHAR(138) NOT NULL
+   uid        INTEGER  NOT NULL PRIMARY KEY,
+   title      VARCHAR(100) NOT NULL,
+   synopsis   VARCHAR(2745),
+   genre      VARCHAR(153) NOT NULL,
+   aired      VARCHAR(28) NOT NULL,
+   episodes   NUMERIC(6,1),
+   members    INTEGER  NOT NULL,
+   popularity INTEGER  NOT NULL,
+   ranked     NUMERIC(7,1),
+   score      VARCHAR(18),
+   img_url    VARCHAR(56),
+   url_link       VARCHAR(138) NOT NULL
 );
+
 INSERT INTO Anime(uid,title,synopsis,genre,aired,episodes,members,popularity,ranked,score,img_url,url_link) VALUES
 (28891, 'Haikyuu!! Second Season',
 'Following their participation at the Inter-High, the Karasuno High School volleyball team attempts to refocus their efforts, aiming to conquer the Spring tournament instead. When they receive an invitation from long-standing rival Nekoma High, Karasuno agrees to take part in a large training camp alongside many notable volleyball teams in Tokyo and even some national level players. By playing with some of the toughest teams in Japan, they hope not only to sharpen their skills, but also come up with new attacks that would strengthen them. Moreover, Hinata and Kageyama attempt to devise a more powerful weapon, one that could possibly break the sturdiest of blocks. Facing what may be their last chance at victory before the senior players graduate, the members of Karasuno''s volleyball team must learn to settle their differences and train harder than ever if they hope to overcome formidable opponents old and new—including their archrival Aoba Jousai and its world-class setter Tooru Oikawa. [Written by MAL Rewrite]',

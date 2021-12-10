@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, session 
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -24,6 +24,7 @@ def login():
         else:
             flash('Email does not exist.', category='error')
     return render_template("login.html", user=current_user)
+
 
 @auth.route('/logout')
 @login_required
@@ -52,7 +53,7 @@ def sign_up():
             flash('Passwords don\'t match.', category='error')
         # elif len(password1) < 7:
         #     flash('Password must be at least 7 characters.', category='error')
-        new_user = User(email = email, first_name = first_name, password = generate_password_hash(password1, method='sha256'))
+        new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256'))
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user, remember=True)
@@ -67,8 +68,3 @@ def my_anime_list():
         pass
     else:
         return render_template("my-anime-list.html", user=current_user)
-
-
-
-
-
