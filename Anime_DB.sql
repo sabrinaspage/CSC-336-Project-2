@@ -1,31 +1,6 @@
+DROP SCHEMA IF EXISTS ANIME_DB;
 CREATE DATABASE IF NOT EXISTS ANIME_DB;
 USE ANIME_DB;
-
-CREATE TABLE User(
-	username VARCHAR(10),
-	fullName VARCHAR(20),
-	email VARCHAR(20),
-	userPassword VARCHAR(10)
-);
-
-CREATE TABLE Homepage(
-	uid INTEGER NOT NULL PRIMARY KEY,
-	title VARCHAR(100) NOT NULL,
-    img_url VARCHAR(56),
-	genre VARCHAR(153) NOT NULL,
-    episodes NUMERIC(6,1),
-	score VARCHAR(18),
-    more_info VARCHAR(138) NOT NULL
-);
-
-CREATE TABLE MyList(
-	uid INTEGER NOT NULL PRIMARY KEY,
-	title VARCHAR(100) NOT NULL,
-    img_url VARCHAR(56),
-	score VARCHAR(18),
-    myscore VARCHAR(18),
-    mycomment VARCHAR(400) NOT NULL
-);
 
 CREATE TABLE Anime(
    uid        INTEGER  NOT NULL PRIMARY KEY,
@@ -41,6 +16,14 @@ CREATE TABLE Anime(
    img_url    VARCHAR(56),
    url_link       VARCHAR(138) NOT NULL
 );
+
+CREATE TABLE `User`(
+	username VARCHAR(10),
+	fullName VARCHAR(20),
+	email VARCHAR(20),
+	userPassword VARCHAR(10)
+);
+
 
 INSERT INTO Anime(uid,title,synopsis,genre,aired,episodes,members,popularity,ranked,score,img_url,url_link) VALUES
 (28891, 'Haikyuu!! Second Season',
@@ -181,3 +164,18 @@ INSERT INTO Anime(uid,title,synopsis,genre,aired,episodes,members,popularity,ran
 '[''Psychological'', ''Drama'', ''Magic'', ''Thriller'']','Jan 7, 2011 to Apr 22, 2011',
 12.0,781975,58,139.0,'8.42','https://cdn.myanimelist.net/images/anime/11/55225.jpg',
 'https://myanimelist.net/anime/9756/Mahou_Shoujo_Madoka%E2%98%85Magica');
+
+
+CREATE TABLE Homepage
+AS (SELECT uid, title img_url, genre, episodes, score, url_link
+	FROM Anime);
+
+
+CREATE TABLE MyList
+AS (SELECT uid, title img_url,  score
+	FROM Anime);
+    
+    
+ALTER TABLE MyList
+ADD myscore VARCHAR(18) NOT NULL,
+ADD  mycomment VARCHAR(400) NOT NULL;
