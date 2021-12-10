@@ -58,7 +58,17 @@ def sign_up():
         login_user(new_user, remember=True)
         flash('Account created!', category='success')
         return render_template("homepage.html", user=current_user)
-
     return render_template("sign_up.html", user=current_user)
+
+
+@auth.route('/my-anime-list', methods=['GET', 'POST'])
+def my_anime_list():
+    if request.method == 'POST':
+        pass
+    else:
+        return render_template("my-anime-list.html", user=current_user)
+
+
+
 
 

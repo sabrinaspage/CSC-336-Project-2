@@ -1,7 +1,72 @@
-{% extends "base.html" %} {% block title %}GRADSCHOOLZERO{% endblock %} {% block content
+{% extends "base.html" %} {% block title %}Homepage{% endblock %} {% block content
 %}
-<h1 align="center">MyAnimeList</h1>
-
     <br>
+    <h3 align="center">Most Popular</h3>
+      <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Score</th>
+            </tr>
+        </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                    <tr>
+                        <td>Death Note</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg" alt="" border=2 height=60 width=50></img></td>
+                        <td>Mystery, Psychological, Supernatural, Thriller</td>
+                        <td>8.4</td>
+                        <td>
+                            <button class="btn btn-outline btn-success">Add</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Your Lie in April</td>
+                        <td><img src="https://m.media-amazon.com/images/M/MV5BYThlNWY5ZDgtYTIxNC00ZjdiLWJmNGUtMDFjMDlmZTAzOWFiXkEyXkFqcGdeQXVyNTM4NzAzNjc@._V1_FMjpg_UX1000_.jpg" alt="" border=2 height=60 width=50></img></td>
+                        <td>Drama, Music, Romance, Slice of Life</td>
+                        <td>8.6</td>
+                        <td>
+                            <button class="btn btn-outline btn-success">Add</button>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    <br>
+    <h3 align="center">All Time</h3>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Score</th>
+            </tr>
+        </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                    <tr>
+                        <td>Death Note</td>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg" alt="" border=2 height=60 width=50></img></td>
+                        <td>Mystery, Psychological, Supernatural, Thriller</td>
+                        <td>8.4</td>
+                        <td>
+                            <button class="btn btn-outline btn-warning">Add</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Your Lie in April</td>
+                        <td><img src="https://m.media-amazon.com/images/M/MV5BYThlNWY5ZDgtYTIxNC00ZjdiLWJmNGUtMDFjMDlmZTAzOWFiXkEyXkFqcGdeQXVyNTM4NzAzNjc@._V1_FMjpg_UX1000_.jpg" alt="" border=2 height=60 width=50></img></td>
+                        <td>Drama, Music, Romance, Slice of Life</td>
+                        <td>8.6</td>
+                         <td>
+                            <button class="btn btn-outline btn-warning">Add</button>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
 
 {% endblock %}
