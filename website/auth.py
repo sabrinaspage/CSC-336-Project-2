@@ -18,12 +18,12 @@ def login():
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
+                return render_template("homepage.html", user=current_user)
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
             flash('Email does not exist.', category='error')
     return render_template("login.html", user=current_user)
-
 
 @auth.route('/logout')
 @login_required
