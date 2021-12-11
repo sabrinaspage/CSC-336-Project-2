@@ -1,44 +1,60 @@
-{% extends "login_base.html" %}
-{% block content %}
+{% extends "login_base.html" %} {% block content %}
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="\static\css\signup.css">
-</head>
+    <link rel="stylesheet" href="\static\css\signup.css" />
+  </head>
 
-<div class="form-wrap">
+  <div class="form-wrap">
     <div class="tabs">
-        <h3 class="login-tab">Sign Up</h3>
-    </div><!--.tabs-->
-  <div class="tabs-content">
-    <div id="signup-tab-content" class="active">
-      <form class="signup-form" action="" method="post">
-        <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email">
-        <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Name">
-        <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
-        <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Confirm Password">
-        <input type="submit" class="button" value="Sign Up">
-      </form><!--.login-form-->
-    </div><!--.signup-tab-content-->
-
-    <div id="login-tab-content">
-      <form class="login-form" action="" method="post">
-        <input type="text" class="input" id="user_login" autocomplete="off" placeholder="Email or Username">
-        <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
-        <input type="checkbox" class="checkbox" id="remember_me">
-        <label for="remember_me">Remember me</label>
-
-        <input type="submit" class="button" value="Login">
-      </form><!--.login-form-->
-      <div class="help-text">
-        <p><a href="#">Forget your password?</a></p>
-      </div><!--.help-text-->
-    </div><!--.login-tab-content-->
-  </div><!--.tabs-content-->
-</div><!--.form-wrap-->
-
+      <h3 class="login-tab">Sign Up</h3>
+    </div>
+    <!--.tabs-->
+    <div class="tabs-content">
+      <div id="signup-tab-content" class="active">
+        <form class="signup-form" action="" method="post">
+          <input
+            type="email"
+            class="input"
+            id="email"
+            name="email"
+            autocomplete="off"
+            placeholder="Enter email"
+          />
+          <input
+            type="text"
+            class="input"
+            id="firstName"
+            name="firstName"
+            autocomplete="off"
+            placeholder="Enter first name"
+          />
+          <input
+            type="password"
+            class="input"
+            id="password1"
+            name="password1"
+            autocomplete="off"
+            placeholder="Enter password"
+          />
+          <input
+            type="password"
+            class="input"
+            id="password2"
+            name="password2"
+            autocomplete="off"
+            placeholder="Confirm password"
+          />
+          <input type="submit" class="button" value="Sign Up" />
+        </form>
+        <!--.login-form-->
+      </div>
+      <!--.signup-tab-content-->
+    </div>
+    <!--.tabs-content-->
+  </div>
+  <!--.form-wrap-->
 </html>
 {% endblock %}
