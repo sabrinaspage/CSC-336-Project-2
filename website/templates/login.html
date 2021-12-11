@@ -1,35 +1,43 @@
-{% extends "login_base.html" %}
-{% block content %}
+{% extends "login_base.html" %} {% block content %}
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="\static\css\login.css">
-</head>
+    <link rel="stylesheet" href="\static\css\login.css" />
+  </head>
 
-<div class="wrapper">
-    <form method="POST" id="sign-in" action="#">
-        <h2 align="center">Login</h2>
+  <div class="form-wrap">
+    <div class="tabs">
+      <h3 class="login-tab">Login</h3>
+    </div>
+    <!--.tabs-->
+
+    <div class="tabs-content">
+      <div id="signup-tab-content" class="active">
+        <form class="signup-form" action="" method="post">
           <input
             type="email"
-            class="form-control"
+            class="input"
             id="email"
-            name="email"
-            placeholder="email"
-          /><br>
+            autocomplete="off"
+            placeholder="Email"
+          />
           <input
             type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="password"
+            class="input"
+            id="user_pass"
+            autocomplete="off"
+            placeholder="Password"
           />
-        <br />
-        <button type="submit">Login</button>
-      </form>
+          <input type="submit" class="button" value="Sign Up" />
+        </form>
+        <!--.login-form-->
+      </div>
+      <!--.signup-tab-content-->
+    </div>
+    <!--.tabs-content-->
   </div>
-
+  <!--.form-wrap-->
 </html>
 {% endblock %}

@@ -1,49 +1,60 @@
-{% extends "login_base.html" %}
-{% block content %}
+{% extends "login_base.html" %} {% block content %}
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="\static\css\signup.css" />
+  </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="\static\css\signup.css">
-</head>
-
-<div class="wrapper">
-    <form method="POST" id="sign-in" action="#">
-        <h2 align="center">Register</h3>
+  <div class="form-wrap">
+    <div class="tabs">
+      <h3 class="login-tab">Sign Up</h3>
+    </div>
+    <!--.tabs-->
+    <div class="tabs-content">
+      <div id="signup-tab-content" class="active">
+        <form class="signup-form" action="" method="post">
           <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              placeholder="Enter email"
+            type="email"
+            class="input"
+            id="email"
+            name="email"
+            autocomplete="off"
+            placeholder="Enter email"
           />
           <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              name="firstName"
-              placeholder="Enter first name"
+            type="text"
+            class="input"
+            id="firstName"
+            name="firstName"
+            autocomplete="off"
+            placeholder="Enter first name"
           />
           <input
-              type="password"
-              class="form-control"
-              id="password1"
-              name="password1"
-              placeholder="Enter password"
+            type="password"
+            class="input"
+            id="password1"
+            name="password1"
+            autocomplete="off"
+            placeholder="Enter password"
           />
           <input
-              type="password"
-              class="form-control"
-              id="password2"
-              name="password2"
-              placeholder="Confirm password"
+            type="password"
+            class="input"
+            id="password2"
+            name="password2"
+            autocomplete="off"
+            placeholder="Confirm password"
           />
-        <br />
-        <button type="submit">Register</button>
-      </form>
+          <input type="submit" class="button" value="Sign Up" />
+        </form>
+        <!--.login-form-->
+      </div>
+      <!--.signup-tab-content-->
+    </div>
+    <!--.tabs-content-->
   </div>
-
+  <!--.form-wrap-->
 </html>
 {% endblock %}
