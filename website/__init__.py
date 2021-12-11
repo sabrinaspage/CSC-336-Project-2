@@ -5,7 +5,7 @@ from website import secrets
 
 conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
 
-# db = SQLAlchemy()
+db = SQLAlchemy()
 # DB_NAME = "database.db"
 
 
