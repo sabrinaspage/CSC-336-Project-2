@@ -6,7 +6,6 @@ from website import secrets
 conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
 
 db = SQLAlchemy()
-# DB_NAME = "database.db"
 
 
 def create_app():
@@ -25,7 +24,6 @@ def create_app():
 
     from .models import User, Anime, MyList, Homepage
 
-    # create_database(app)
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
@@ -38,7 +36,3 @@ def create_app():
     return app
 
 
-# def create_database(app):
-#     if not path.exists('website/' + DB_NAME):
-#         db.create_all(app=app)
-#         print('Created Database!')

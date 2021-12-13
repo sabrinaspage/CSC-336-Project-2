@@ -40,9 +40,6 @@ def sign_up():
         first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        # TODO ATM USER DODESNT EXIST
-        # TODO SO FIRST CHECK IF EXISTS
-        # TODO IF NOT, ADD TO DB
 
         amountOfUsers = User.query.count()
         amountOfUsers = amountOfUsers + 1
@@ -50,14 +47,10 @@ def sign_up():
         # checks the requirements that the inputs are 
         if user:
             flash('Email already exists.', category='error')
-        # elif len(email) < 4:
-        #     flash('Email must be greater than 3 characters.', category='error')
         elif len(first_name) < 2:
             flash('First name must be greater than 1 character.', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match.', category='error')
-        # elif len(password1) < 7:
-        #     flash('Password must be at least 7 characters.', category='error')
 
         # IF USER DOESNT EXIST IN DB, THEN ADD TO DB
         new_user = User(id=amountOfUsers, email=email, name=first_name, password=generate_password_hash(password1, method='sha256'))
