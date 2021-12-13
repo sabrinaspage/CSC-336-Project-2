@@ -5,9 +5,9 @@ from sqlalchemy.sql import func
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(400), unique=True)
+    email = db.Column(db.String(400))
     password = db.Column(db.String(400))
-    first_name = db.Column(db.String(400))
+    name = db.Column(db.String(400))
 
 
 class Anime(db.Model):
