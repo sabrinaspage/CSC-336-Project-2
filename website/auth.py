@@ -69,8 +69,21 @@ def my_anime_list():
     animes = mylist.query.order_by(desc(mylist.score)).all()
     if request.method == "POST":
         id = request.form.get("remove")
-        anime = mylist.query.get(id)
-        db.session.delete(anime)
-        db.session.commit()
-        animes = mylist.query.order_by(desc(mylist.score)).all()
+        update_id = request.form.get('update_id')
+        if id:
+            id = request.form.get("remove")
+            anime = mylist.query.get(id)
+            db.session.delete(anime)
+            db.session.commit()
+            flash("Anime Deleted Successfully")
+            return redirect(url_for('auth.my_anime_list'))
+        elif update_id:
+            update_id = request.form.get('update_id')
+            anime = mylist.query.get(update_id)
+            anime.myscore = request.form['myscore']
+            anime.mycomment = request.form['mycomment']
+            db.session.commit()
+            flash("Anime Updated Successfully")
+            return redirect(url_for('auth.my_anime_list'))
     return render_template("my-anime-list.html", user=current_user, table_headings=headings, data=animes)
+
