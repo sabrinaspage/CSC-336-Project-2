@@ -14,7 +14,9 @@ def homepage():
     headings = ("Title", "", "Genre", "Episodes", "Overall Rating", "More Info")
     searchTextField = request.args.get('searchTextField')
     if searchTextField:
-        animes = Homepage.query.filter_by(title=searchTextField).order_by(desc(Homepage.score)).all()
+        animes = Homepage.query.filter(
+            Homepage.title.contains(searchTextField)
+        ).order_by(desc(Homepage.score)).all()
     else:
         animes = Homepage.query.order_by(desc(Homepage.score)).all()
 
