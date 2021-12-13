@@ -21,11 +21,13 @@ def homepage():
         animes = Homepage.query.order_by(desc(Homepage.score)).all()
 
     if request.method == "POST":
-        id = request.form.get("add")
-        anime = Homepage.query.get(id)  # got the anime
-        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore="",
-                           mycomment="")
+        add_id = request.form.get("add_id")
+        anime = Homepage.query.get(add_id)  # got the anime
+        anime.myscore = request.form['myscore']
+        anime.mycomment = request.form['mycomment']
+        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
+                           mycomment=anime.mycomment)
         db.session.add(new_entry)
         db.session.commit()
-        return redirect(url_for('views.homepage', user=current_user, table_headings=headings, data=animes))
+        flash("Anime Added Successfully")
     return render_template("homepage.html", user=current_user, table_headings=headings, data=animes)
