@@ -4,7 +4,7 @@
 <h3 align="center">My Anime List</h3>
 
 <br>
-<form method="POST">
+<!--<form method="POST">-->
     <table class="table table-hover table-dark" id = "animetable">
         <thead>
             <tr>
@@ -21,12 +21,43 @@
                 <td>{{animes.score }}</td>
                 <td>{{animes.myscore }}</td>
                 <td>{{animes.mycomment }}</td>
-                <td><button class="btn btn-outline btn-success" name="update" value="{{ animes.uid }}" formmethod="POST" >Update</button></td>
+                <td><button href="#" data-toggle="modal" data-target="#modalupdate{{ animes.uid }}" class="btn btn-outline btn-success">Update</button></td>
+                <form method="POST">
                     <td><button class="btn btn-outline btn-danger" name="remove" value="{{ animes.uid }}" formmethod="POST" >Remove</button></td>
+                </form>
             </tr>
+            <div class="modal" id="modalupdate{{ animes.uid }}"tabindex="-1" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 style="color:black;" class="modal-title">Update Rating and Review</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST">
+                       <div class="form-group">
+                       <label style="color:black; font-weight:bold;">My Rating:</label>
+                        <input type="hidden" name="update_id" value="{{ animes.uid }}">
+                        <input type="text" name="myscore" class="form-control" value="{{ animes.myscore }}" placeholder="Rating">
+                       </div>
+                        <label style="color:black; font-weight:bold;">My Review:</label>
+                       <div class="form-group">
+                        <input type="text" name="mycomment" class="form-control" value="{{ animes.mycomment }}" placeholder="Review">
+                       </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-outline btn-success" type="submit">Update</button>
+                  </div>
+                </form>
+                  </div>
+                </div>
+              </div>
+            </div>
         {% endfor %}
         </tbody>
 </table>
-</form>
+
 
 {% endblock %}
