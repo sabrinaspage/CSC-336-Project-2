@@ -18,7 +18,7 @@
                 {% for animes in data %}
                 <td>{{animes.title }}</td>
                 <td><img src={{ animes.img_url }} alt="" border=1 height=200 width=200/> </td>
-                <td>{{animes.genre }}</td>
+                <td> {{ animes.genre }} </td>
                 <td>{{animes.episodes }}</td>
                 <td>{{animes.score }}</td>
                     <td> <a href={{animes.link }}> Click me! </a> </td>
