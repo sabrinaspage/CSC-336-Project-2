@@ -17,6 +17,16 @@ CREATE TABLE Anime(
    link   VARCHAR(138) NOT NULL
 );
 
+
+CREATE TABLE MyList
+AS (SELECT uid, title, img_url,  score
+	FROM Anime);
+    
+ALTER TABLE MyList
+ADD myscore VARCHAR(18) NOT NULL,
+ADD  mycomment VARCHAR(400) NOT NULL;
+
+
 INSERT INTO Anime(uid,title,synopsis,genre,aired,episodes,members,popularity,ranked,score,img_url,link) VALUES (1535,'Death Note','A shinigami, as a god of death, can kill any person—provided they see their victim''s face and write their victim''s name in a notebook called a Death Note. One day, Ryuk, bored by the shinigami lifestyle and interested in seeing how a human would use a Death Note, drops one into the human realm. 
  
 High school student and prodigy Light Yagami stumbles upon the Death Note and—since he deplores the state of the world—tests the deadly notebook by writing a criminal''s name in it. When the criminal dies immediately following his experiment with the Death Note, Light is greatly surprised and quickly recognizes how devastating the power that has fallen into his hands could be.             
@@ -103,7 +113,7 @@ One day, an embarrassing mistake causes the two students to cross paths. Ryuuji 
  Toradora!  is a romantic comedy that follows this odd duo as they embark on a quest to help each other with their respective crushes, forming an unlikely alliance in the process. 
  
 [Written by MAL Rewrite]','[''Slice of Life'', ''Comedy'', ''Romance'', ''School'']','Oct 2, 2008 to Mar 26, 2009',25,1153720,14,204,8.34,'https://cdn.myanimelist.net/images/anime/13/22128.jpg','https://myanimelist.net/anime/4224/Toradora');
-INSERT INTO Anime(uid,title,synopsis,genre,aired,episodes,members,popularity,ranked,score,img_url,link) VALUES (32281,'Kimi no Na wa.','Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school student while juggling his part-time job and hopes for a future in architecture. 
+INSERT INTO Anime(uid,title,synopsis,genre,aired,episodes,members,popularity,ranked,score,img_url,link) VALUES (32281,'Kimi no Na wa','Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school student while juggling his part-time job and hopes for a future in architecture. 
  
 One day, Mitsuha awakens in a room that is not her own and suddenly finds herself living the dream life in Tokyo—but in Taki''s body! Elsewhere, Taki finds himself living Mitsuha''s life in the humble countryside. In pursuit of an answer to this strange phenomenon, they begin to search for one another. 
  
@@ -195,13 +205,6 @@ CREATE TABLE `User`(
 );
 
 CREATE TABLE Homepage
-AS (SELECT uid, title img_url, genre, episodes, score, link
+AS (SELECT uid, title, img_url, genre, episodes, score, link
 	FROM Anime);
 
-CREATE TABLE MyList
-AS (SELECT uid, title img_url,  score
-	FROM Anime);
-    
-ALTER TABLE MyList
-ADD myscore VARCHAR(18) NOT NULL,
-ADD  mycomment VARCHAR(400) NOT NULL;

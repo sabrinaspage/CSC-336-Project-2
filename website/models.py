@@ -41,4 +41,4 @@ class Homepage(db.Model):
     genre = db.Column(db.String(153))
     episodes = db.Column(db.Float)
     score = db.Column(db.String(18))
-    more_info = db.Column(db.String(138))
+    link = db.Column(db.String(138))
