@@ -11,7 +11,7 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
-        password = request.form.get('password')
+        password = request.form.get('user_pass')
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -40,8 +40,13 @@ def sign_up():
         first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+        # TODO ATM USER DODESNT EXIST
+        # TODO SO FIRST CHECK IF EXISTS
+        # TODO IF NOT, ADD TO DB
 
-        user = User.query.filter_by(email=email).first()
+        amountOfUsers = User.query.count()
+        amountOfUsers = amountOfUsers + 1
+        user = User.query.filter_by(email=email).first() is not None
         # checks the requirements that the inputs are 
         if user:
             flash('Email already exists.', category='error')
@@ -53,7 +58,9 @@ def sign_up():
             flash('Passwords don\'t match.', category='error')
         # elif len(password1) < 7:
         #     flash('Password must be at least 7 characters.', category='error')
-        new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256'))
+
+        # IF USER DOESNT EXIST IN DB, THEN ADD TO DB
+        new_user = User(id=amountOfUsers, email=email, name=first_name, password=generate_password_hash(password1, method='sha256'))
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user, remember=True)

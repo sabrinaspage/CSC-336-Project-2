@@ -187,10 +187,11 @@ INSERT INTO Anime(uid,title,synopsis,genre,aired,episodes,members,popularity,ran
 [Written by MAL Rewrite]','[''Mystery'', ''Psychological'', ''Thriller'']','Jul 11, 2014 to Sep 26, 2014',11,642866,84,363,8.17,'https://cdn.myanimelist.net/images/anime/4/64447.jpg','https://myanimelist.net/anime/23283/Zankyou_no_Terror');
 
 CREATE TABLE `User`(
-	username VARCHAR(10),
-	fullName VARCHAR(20),
-	email VARCHAR(20),
-	userPassword VARCHAR(10)
+    id INT NOT NULL,
+    email VARCHAR(400),
+	name VARCHAR(400),
+	password VARCHAR(400),
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE Homepage

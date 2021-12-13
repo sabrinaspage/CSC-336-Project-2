@@ -6,7 +6,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="\static\css\login.css" />
   </head>
-
   <div class="form-wrap">
     <div class="tabs">
       <h3 class="login-tab">Login</h3>
@@ -14,11 +13,12 @@
     <!--.tabs-->
 
     <div class="tabs-content">
-      <div id="signup-tab-content" class="active">
-        <form class="signup-form" action="" method="POST">
+      <div id="login-tab-content" class="active">
+        <form class="login" action="" method="POST">
           <input
             type="email"
             class="input"
+            name="email"
             id="email"
             autocomplete="off"
             placeholder="Email"
@@ -26,11 +26,12 @@
           <input
             type="password"
             class="input"
+            name="user_pass"
             id="user_pass"
             autocomplete="off"
             placeholder="Password"
           />
-          <input type="submit" class="button" value="Sign Up" />
+          <input type="submit" class="button" value="Login" id="Login" />
         </form>
         <!--.login-form-->
       </div>
