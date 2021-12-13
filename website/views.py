@@ -19,7 +19,7 @@ def homepage():
     if request.method == "POST":
         id = request.form.get("add")
         anime = Homepage.query.get(id) # got the anime
-        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore="10", mycomment = "good")
+        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore="", mycomment = "")
         db.session.add(new_entry)
         db.session.commit()
         return redirect(url_for('views.homepage', user=current_user, table_headings=headings, data=animes))

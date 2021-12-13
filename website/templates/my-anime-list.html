@@ -21,8 +21,8 @@
                 <td>{{animes.score }}</td>
                 <td>{{animes.myscore }}</td>
                 <td>{{animes.mycomment }}</td>
-
                 <td><button class="btn btn-outline btn-success" name="update" value="{{ animes.uid }}" formmethod="POST" >Update</button></td>
+                    <td><button class="btn btn-outline btn-danger" name="remove" value="{{ animes.uid }}" formmethod="POST" >Remove</button></td>
             </tr>
         {% endfor %}
         </tbody>

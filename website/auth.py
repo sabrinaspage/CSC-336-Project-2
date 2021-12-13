@@ -67,5 +67,10 @@ def sign_up():
 def my_anime_list():
     headings = ("Title", "", "Overall Rating", "My Rating", "My Review")
     animes = mylist.query.order_by(desc(mylist.score)).all()
-
+    if request.method == "POST":
+        id = request.form.get("remove")
+        anime = mylist.query.get(id)
+        db.session.delete(anime)
+        db.session.commit()
+        animes = mylist.query.order_by(desc(mylist.score)).all()
     return render_template("my-anime-list.html", user=current_user, table_headings=headings, data=animes)
