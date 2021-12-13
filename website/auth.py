@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
-from .models import User
+from .models import User, Homepage, mylist
+from sqlalchemy import desc
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -64,7 +65,7 @@ def sign_up():
 
 @auth.route('/my-anime-list', methods=['GET', 'POST'])
 def my_anime_list():
-    if request.method == 'POST':
-        pass
-    else:
-        return render_template("my-anime-list.html", user=current_user)
+    headings = ("Title", "", "Overall Rating", "My Rating", "My Review")
+    animes = mylist.query.order_by(desc(mylist.score)).all()
+
+    return render_template("my-anime-list.html", user=current_user, table_headings=headings, data=animes)

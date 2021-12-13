@@ -1,39 +1,32 @@
 {% extends "base.html" %} {% block title %}My Anime List{% endblock %} {% block content
 %}
      <br>
-<h2 align="center">MyAnimeList</h2>
+<h3 align="center">My Anime List</h3>
+
 <br>
-      <table class="table table-hover table-dark">
+<form method="POST">
+    <table class="table table-hover table-dark" id = "animetable">
         <thead>
             <tr>
-                <!-- Your Columns HERE -->
-                <th scope="col">Title</th>
-                <th scope="col">Image</th>
-                <th scope="col">Genre</th>
-                <th scope="col">Score</th>
+                {% for header in table_headings %}
+                <th> {{ header }}</th>
+                {% endfor %}
             </tr>
         </thead>
-            <tbody>
-                <!-- Your rows inside the table HERE: -->
-                    <tr>
-                        <td>Death Note</td>
-                        <td><img src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg" alt="" border=2 height=60 width=50></img></td>
-                        <td>Mystery, Psychological, Supernatural, Thriller</td>
-                        <td>8.4</td>
-                        <td>
-                            <button class="btn btn-outline btn-danger">Remove</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Your Lie in April</td>
-                        <td><img src="https://m.media-amazon.com/images/M/MV5BYThlNWY5ZDgtYTIxNC00ZjdiLWJmNGUtMDFjMDlmZTAzOWFiXkEyXkFqcGdeQXVyNTM4NzAzNjc@._V1_FMjpg_UX1000_.jpg" alt="" border=2 height=60 width=50></img></td>
-                        <td>Drama, Music, Romance, Slice of Life</td>
-                        <td>8.6</td>
-                        <td>
-                            <button class="btn btn-outline btn-danger">Remove</button>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
+        <tbody>
+            <tr>
+                {% for animes in data %}
+                <td>{{animes.title }}</td>
+                <td><img src={{ animes.img_url }} alt="" border=1 height=200 width=200/> </td>
+                <td>{{animes.score }}</td>
+                <td>{{animes.myscore }}</td>
+                <td>{{animes.mycomment }}</td>
+
+                <td><button class="btn btn-outline btn-success" name="update" value="{{ animes.uid }}" formmethod="POST" >Update</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+</form>
 
 {% endblock %}
