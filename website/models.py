@@ -32,7 +32,6 @@ class mylist(db.Model):
     myscore = db.Column(db.String(18))
     mycomment = db.Column(db.String(400))
 
-
 class Homepage(db.Model):
     uid = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
