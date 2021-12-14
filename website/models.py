@@ -41,3 +41,33 @@ class Homepage(db.Model):
     episodes = db.Column(db.Float)
     score = db.Column(db.String(18))
     link = db.Column(db.String(138))
+
+
+class top(db.Model):
+    uid = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    img_url = db.Column(db.String(56))
+    genre = db.Column(db.String(153))
+    episodes = db.Column(db.Float)
+    score = db.Column(db.String(18))
+    link = db.Column(db.String(138))
+
+
+class ova(db.Model):
+    uid = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    img_url = db.Column(db.String(56))
+    genre = db.Column(db.String(153))
+    episodes = db.Column(db.Float)
+    score = db.Column(db.String(18))
+    link = db.Column(db.String(138))
+
+
+class movie(db.Model):
+    uid = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    img_url = db.Column(db.String(56))
+    genre = db.Column(db.String(153))
+    episodes = db.Column(db.Float)
+    score = db.Column(db.String(18))
+    link = db.Column(db.String(138))
