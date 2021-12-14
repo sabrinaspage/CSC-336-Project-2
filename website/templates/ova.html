@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% block title %}Homepage{% endblock %} {% block content
+%}
+    <br>
+
+    <style>
+body {
+
+  background-image: url('https://t4.ftcdn.net/jpg/02/43/06/71/360_F_243067172_I6zXV8AnP61JgSR4SbcrUKQSCelNp9Ax.jpg');
+  background-color: rgba(255, 255, 255, 0.486);
+  background-blend-mode: overlay;
+}
+</style>
+
+    <h3 align="center">OVAs and Specials</h3>
+<br>
+    <center>
+<form class="form-inline my-2 my-lg-0" method="GET">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchTextField">
+    <button class="btn btn-outline btn-success">Submit</button>
+</form>
+</center>
+     <br>
+<!--<form method="POST">-->
+    <table class="table table-striped table-dark" id = "animetable">
+        <thead>
+            <tr>
+                {% for header in table_headings %}
+                <th> {{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for animes in data %}
+                <td>{{animes.title }}</td>
+                <td><img src={{ animes.img_url }} alt="" border=1 height=100% width=200/> </td>
+                <td> {{ animes.genre }} </td>
+                <td>{{animes.episodes }}</td>
+                <td>{{animes.score }}</td>
+                <td> <a href={{animes.link }}> Click me! </a> </td>
+                <td><button data-toggle="modal" data-target="#modaladd{{ animes.uid }}"class="btn btn-outline btn-success">Add</button></td>
+            </tr>
+            <div class="modal fade" id="modaladd{{ animes.uid }}"tabindex="-1" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 style="color:black;" class="modal-title">Add Rating and Review</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST">
+                       <div class="form-group">
+                       <label style="color:black; font-weight:bold;">My Rating:</label>
+                        <input type="hidden" name="add_id" value="{{ animes.uid }}">
+                        <input type="text" name="myscore" class="form-control" value="{{ animes.myscore }}" placeholder="Rating">
+                       </div>
+                        <label style="color:black; font-weight:bold;">My Review:</label>
+                       <div class="form-group">
+                        <input type="text" name="mycomment" class="form-control" value="{{ animes.mycomment }}" placeholder="Review">
+                       </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-outline btn-success" type="submit">Add</button>
+                  </div>
+                </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+        </tbody>
+</table>
+<!--</form>-->
+{% endblock %}

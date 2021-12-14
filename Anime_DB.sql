@@ -309,4 +309,3 @@ CREATE TABLE `User`(
 CREATE TABLE Homepage
 AS (SELECT uid, title, img_url, genre, episodes, score, link
 	FROM Anime);
-
