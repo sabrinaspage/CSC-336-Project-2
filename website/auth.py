@@ -153,3 +153,7 @@ def movie_list():
         flash("Anime Added Successfully")
     return render_template("movies.html", user=current_user, table_headings=headings, data=animes)
 
+@auth.route('/help')
+@login_required
+def help():
+    return render_template("help.html", user=current_user)
