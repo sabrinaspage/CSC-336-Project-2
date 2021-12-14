@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
-from .models import User, Homepage, mylist, ova
+from .models import User, Homepage, mylist, ova, top, movie
 from sqlalchemy import desc
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -107,5 +107,49 @@ def ova_list():
         db.session.add(new_entry)
         db.session.commit()
         flash("Anime Added Successfully")
-    return render_template("homepage.html", user=current_user, table_headings=headings, data=animes)
+    return render_template("ova.html", user=current_user, table_headings=headings, data=animes)
+
+@auth.route('/top-anime', methods=['GET', 'POST'])
+def top_list():
+    headings = ("Title", "", "Genre", "Episodes", "Overall Rating", "More Info")
+    searchTextField = request.args.get('searchTextField')
+    if searchTextField:
+        animes = top.query.filter(
+            top.title.contains(searchTextField)
+        ).order_by(desc(top.score)).all()
+    else:
+        animes = top.query.order_by(desc(top.score)).all()
+    if request.method == "POST":
+        add_id = request.form.get("add_id")
+        anime = top.query.get(add_id)  # got the anime
+        anime.myscore = request.form['myscore']
+        anime.mycomment = request.form['mycomment']
+        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
+                           mycomment=anime.mycomment)
+        db.session.add(new_entry)
+        db.session.commit()
+        flash("Anime Added Successfully")
+    return render_template("top-anime.html", user=current_user, table_headings=headings, data=animes)
+
+@auth.route('/movies', methods=['GET', 'POST'])
+def movie_list():
+    headings = ("Title", "", "Genre", "Episodes", "Overall Rating", "More Info")
+    searchTextField = request.args.get('searchTextField')
+    if searchTextField:
+        animes = movie.query.filter(
+            movie.title.contains(searchTextField)
+        ).order_by(desc(movie.score)).all()
+    else:
+        animes = movie.query.order_by(desc(movie.score)).all()
+    if request.method == "POST":
+        add_id = request.form.get("add_id")
+        anime = movie.query.get(add_id)  # got the anime
+        anime.myscore = request.form['myscore']
+        anime.mycomment = request.form['mycomment']
+        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
+                           mycomment=anime.mycomment)
+        db.session.add(new_entry)
+        db.session.commit()
+        flash("Anime Added Successfully")
+    return render_template("movies.html", user=current_user, table_headings=headings, data=animes)
 
