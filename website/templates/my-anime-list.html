@@ -53,7 +53,11 @@ body {
                        <div class="form-group">
                        <label style="color:black; font-weight:bold;">My Rating:</label>
                         <input type="hidden" name="update_id" value="{{ animes.uid }}">
-                        <input type="text" name="myscore" class="form-control" value="{{ animes.myscore }}" placeholder="Rating">
+                        <select id="rating" type="text" name="myscore" class="form-control" value="{{ animes.myscore }}" placeholder="Rating">
+                          {% for i in range(1, 11) %}
+                          <option value="{{ i }}">{{ i }}</option>
+                          {% endfor %}
+                        </select>
                        </div>
                         <label style="color:black; font-weight:bold;">My Review:</label>
                        <div class="form-group">
