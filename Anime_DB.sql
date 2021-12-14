@@ -22,22 +22,9 @@ CREATE TABLE MyList
 AS (SELECT uid, title, img_url,  score
 	FROM Anime);
     
-    
 ALTER TABLE MyList
 ADD myscore VARCHAR(18) NOT NULL,
 ADD  mycomment VARCHAR(400) NOT NULL;
-
-CREATE TABLE top
-AS (SELECT uid, title, img_url, genre, episodes, score, link
-	FROM Anime);
-    
-    CREATE TABLE ova
-AS (SELECT uid, title, img_url, genre, episodes, score, link
-	FROM Anime);
-    
-    CREATE TABLE movie
-AS (SELECT uid, title, img_url, genre, episodes, score, link
-	FROM Anime);
 
 -- insert statements into anime --
 
@@ -295,6 +282,21 @@ However, the troubling memories of Mirai''s old life gradually begin to resurfac
  
 [Written by MAL Rewrite]','Fantasy, Slice of Life, Supernatural','Apr 25, 2015',1,142707,781,264,8.27,'https://cdn.myanimelist.net/images/anime/9/72614.jpg','https://myanimelist.net/anime/28675/Kyoukai_no_Kanata_Movie_2__Ill_Be_Here_-_Mirai-hen');
 
+CREATE TABLE top
+AS (SELECT uid, title, img_url, genre, episodes, score, link
+	FROM Anime
+    ORDER BY score DESC
+    LIMIT 20);
+    
+    CREATE TABLE ova
+AS (SELECT uid, title, img_url, genre, episodes, score, link
+	FROM Anime
+    WHERE Anime.`type` = 'OVA');
+    
+    CREATE TABLE movie
+AS (SELECT uid, title, img_url, genre, episodes, score, link
+	FROM Anime
+    WHERE Anime.`type` = 'Movie');
 
 CREATE TABLE `User`(
     id INT NOT NULL,
