@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
-from .models import User, Homepage, mylist
+from .models import User, Homepage, mylist, ova
 from sqlalchemy import desc
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -86,4 +86,26 @@ def my_anime_list():
             flash("Anime Updated Successfully")
             return redirect(url_for('auth.my_anime_list'))
     return render_template("my-anime-list.html", user=current_user, table_headings=headings, data=animes)
+
+@auth.route('/ova', methods=['GET', 'POST'])
+def ova_list():
+    headings = ("Title", "", "Genre", "Episodes", "Overall Rating", "More Info")
+    searchTextField = request.args.get('searchTextField')
+    if searchTextField:
+        animes = ova.query.filter(
+            ova.title.contains(searchTextField)
+        ).order_by(desc(ova.score)).all()
+    else:
+        animes = ova.query.order_by(desc(ova.score)).all()
+    if request.method == "POST":
+        add_id = request.form.get("add_id")
+        anime = ova.query.get(add_id)  # got the anime
+        anime.myscore = request.form['myscore']
+        anime.mycomment = request.form['mycomment']
+        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
+                           mycomment=anime.mycomment)
+        db.session.add(new_entry)
+        db.session.commit()
+        flash("Anime Added Successfully")
+    return render_template("homepage.html", user=current_user, table_headings=headings, data=animes)
 
