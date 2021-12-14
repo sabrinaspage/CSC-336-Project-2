@@ -18,7 +18,7 @@ body {
     <center>
 <form class="form-inline my-2 my-lg-0" method="GET">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchTextField">
-    <button class="btn btn-outline btn-success">Submit</button>
+    <button class="btn btn-outline btn-warning">Submit</button>
 </form>
 </center>
      <br>
@@ -40,7 +40,7 @@ body {
                 <td>{{animes.episodes }}</td>
                 <td>{{animes.score }}</td>
                 <td> <a href={{animes.link }} target="_blank"> Click me! </a> </td>
-                <td><button data-toggle="modal" data-target="#modaladd{{ animes.uid }}"class="btn btn-outline btn-success">Add</button></td>
+                <td><button data-toggle="modal" data-target="#modaladd{{ animes.uid }}"class="btn btn-outline btn-light">Add</button></td>
             </tr>
             <div class="modal fade" id="modaladd{{ animes.uid }}"tabindex="-1" role="dialog">
               <div class="modal-dialog">
