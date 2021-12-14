@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
 class Anime(db.Model):
     uid = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
+    type = db.Column(db.String(6))
     synopsis = db.Column(db.String(2745))
     genre = db.Column(db.String(153))
     aired = db.Column(db.String(28))
