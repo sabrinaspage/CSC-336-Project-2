@@ -5,3 +5,4 @@ website/__pycache__/auth.cpython-38.pyc
 website/__pycache__/models.cpython-38.pyc
 website/__pycache__/views.cpython-38.pyc
 *.pyc
+website/secrets.py
