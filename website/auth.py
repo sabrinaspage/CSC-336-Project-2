@@ -66,7 +66,13 @@ def sign_up():
 @auth.route('/my-anime-list', methods=['GET', 'POST'])
 def my_anime_list():
     headings = ("Title", "", "Overall Rating", "My Rating", "My Review")
-    animes = mylist.query.order_by(desc(mylist.score)).all()
+    searchTextField = request.args.get('searchTextField')
+    if searchTextField:
+        animes = mylist.query.filter(
+            mylist.title.contains(searchTextField)
+        ).order_by(desc(mylist.score)).all()
+    else:
+        animes = mylist.query.order_by(desc(mylist.score)).all()
     if request.method == "POST":
         id = request.form.get("remove")
         update_id = request.form.get('update_id')
