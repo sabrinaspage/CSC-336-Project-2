@@ -110,9 +110,13 @@ def ova_list():
         anime.mycomment = request.form['mycomment']
         new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
                            mycomment=anime.mycomment)
-        db.session.add(new_entry)
-        db.session.commit()
-        flash("Anime Added Successfully")
+        animeAdded = bool(mylist.query.filter_by(uid=anime.uid).first())
+        if not animeAdded:
+            db.session.add(new_entry)
+            db.session.commit()
+            flash("Anime Added Successfully")
+        else:
+            flash("Anime Already Added", "error")
     return render_template("ova.html", user=current_user, table_headings=headings, data=animes)
 
 @auth.route('/top-anime', methods=['GET', 'POST'])
@@ -132,9 +136,13 @@ def top_list():
         anime.mycomment = request.form['mycomment']
         new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
                            mycomment=anime.mycomment)
-        db.session.add(new_entry)
-        db.session.commit()
-        flash("Anime Added Successfully")
+        animeAdded = bool(mylist.query.filter_by(uid=anime.uid).first())
+        if not animeAdded:
+            db.session.add(new_entry)
+            db.session.commit()
+            flash("Anime Added Successfully")
+        else:
+            flash("Anime Already Added", "error")
     return render_template("top-anime.html", user=current_user, table_headings=headings, data=animes)
 
 @auth.route('/movies', methods=['GET', 'POST'])
@@ -154,9 +162,13 @@ def movie_list():
         anime.mycomment = request.form['mycomment']
         new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
                            mycomment=anime.mycomment)
-        db.session.add(new_entry)
-        db.session.commit()
-        flash("Anime Added Successfully")
+        animeAdded = bool(mylist.query.filter_by(uid=anime.uid).first())
+        if not animeAdded:
+            db.session.add(new_entry)
+            db.session.commit()
+            flash("Anime Added Successfully")
+        else:
+            flash("Anime Already Added", "error")
     return render_template("movies.html", user=current_user, table_headings=headings, data=animes)
 
 @auth.route('/help')
