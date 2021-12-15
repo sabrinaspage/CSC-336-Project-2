@@ -18,8 +18,8 @@
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #a6daf7;">
-    <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #212121;">
+    <a class="navbar-brand text-white" href="#">
     <img src="https://cdn.dribbble.com/users/1303230/screenshots/10786710/1anime_avatar_4x.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
     SQL NoJutsu の術
   </a>
@@ -34,16 +34,16 @@
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
           {% if user.is_authenticated %}
-              <a class="nav-item nav-link text-dark" id="homepage" href="/">Homepage</a>
+              <a class="nav-item nav-link text-light" id="homepage" href="/">Homepage</a>
               <a class="nav-item nav-link text-primary" id="my-anime-list" href="/my-anime-list">My Animes</a>
-              <a class="nav-item nav-link text-dark" id="top" href="/top-anime">Top Animes</a>
-              <a class="nav-item nav-link text-dark" id="movie" href="/movies">Movies</a>
-              <a class="nav-item nav-link text-dark" id="ova" href="/ova">OVAs</a>
-              <a class="nav-item nav-link text-dark" id="logout" href="/logout">Logout</a>
-              <a class="nav-item nav-link text-dark" id="help" href="/help">Help</a>
+              <a class="nav-item nav-link text-light" id="top" href="/top-anime">Top Animes</a>
+              <a class="nav-item nav-link text-light" id="movie" href="/movies">Movies</a>
+              <a class="nav-item nav-link text-light" id="ova" href="/ova">OVAs</a>
+              <a class="nav-item nav-link text-light" id="help" href="/help">Help</a>
+              <a class="nav-item nav-link text-light" id="logout" href="/logout">Logout</a>
           {% else %}
-              <a class="nav-item nav-link text-dark" id="sign-up" href="/sign-up">Sign Up</a>
-              <a class="nav-item nav-link text-dark" id="login" href="/login">Login</a>
+              <a class="nav-item nav-link text-light" id="sign-up" href="/sign-up">Sign Up</a>
+              <a class="nav-item nav-link text-light" id="login" href="/login">Login</a>
           {% endif %}
         </div>
       </div>
