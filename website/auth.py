@@ -72,7 +72,7 @@ def my_anime_list():
             mylist.title.contains(searchTextField)
         ).order_by(desc(mylist.score)).all()
     else:
-        animes = mylist.query.order_by(desc(mylist.score)).all()
+        animes = mylist.query.filter_by(id=current_user.id).order_by(desc(mylist.score)).all()
     if request.method == "POST":
         id = request.form.get("remove")
         update_id = request.form.get('update_id')
@@ -108,7 +108,7 @@ def ova_list():
         anime = ova.query.get(add_id)  # got the anime
         anime.myscore = request.form['myscore']
         anime.mycomment = request.form['mycomment']
-        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
+        new_entry = mylist(id=current_user.id, uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
                            mycomment=anime.mycomment)
         animeAdded = bool(mylist.query.filter_by(uid=anime.uid).first())
         if not animeAdded:
@@ -134,7 +134,7 @@ def top_list():
         anime = top.query.get(add_id)  # got the anime
         anime.myscore = request.form['myscore']
         anime.mycomment = request.form['mycomment']
-        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
+        new_entry = mylist(id=current_user.id, uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
                            mycomment=anime.mycomment)
         animeAdded = bool(mylist.query.filter_by(uid=anime.uid).first())
         if not animeAdded:
@@ -160,7 +160,7 @@ def movie_list():
         anime = movie.query.get(add_id)  # got the anime
         anime.myscore = request.form['myscore']
         anime.mycomment = request.form['mycomment']
-        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
+        new_entry = mylist(id=current_user.id, uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
                            mycomment=anime.mycomment)
         animeAdded = bool(mylist.query.filter_by(uid=anime.uid).first())
         if not animeAdded:

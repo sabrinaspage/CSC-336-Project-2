@@ -25,8 +25,8 @@ def homepage():
         anime = Homepage.query.get(add_id)  # got the anime
         anime.myscore = request.form['myscore']
         anime.mycomment = request.form['mycomment']
-        new_entry = mylist(uid=anime.uid, title=anime.title, img_url=anime.img_url, score=anime.score, myscore=anime.myscore,
-                           mycomment=anime.mycomment)
+        new_entry = mylist(id=current_user.id, uid=anime.uid, title=anime.title, img_url=anime.img_url,
+                           score=anime.score, myscore=anime.myscore, mycomment=anime.mycomment)
         animeAdded = bool(mylist.query.filter_by(uid=anime.uid).first())
         if not animeAdded:
             db.session.add(new_entry)

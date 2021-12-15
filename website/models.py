@@ -26,6 +26,7 @@ class Anime(db.Model):
 
 
 class mylist(db.Model):
+    id = db.Column(db.Integer)
     uid = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     img_url = db.Column(db.String(56))
