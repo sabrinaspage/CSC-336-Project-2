@@ -1,4 +1,4 @@
 dbhost = 'localhost'
 dbuser = 'root'
-dbpass = '083723'
+dbpass = ''
 dbname = 'anime_db'
